@@ -1,19 +1,30 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {NavLink} from "react-router-dom";
 
 const Header: React.FC = () => {
     return (
         <header className="header">
             <div className="container">
                 <div className="header-wrapper">
-                    <Link to="/" className="header__link active">
+                    <NavLink
+                        to="/"
+                        className={({isActive}) =>
+                            `header__link ${isActive ? "active" : ""}`
+                        }
+                    >
                         Курсы
-                    </Link>
-                    <Link to="/timetable" className="header__link">
+                    </NavLink>
+
+                    <NavLink
+                        to="/timetable"
+                        className={({isActive}) =>
+                            `header__link ${isActive ? "active" : ""}`
+                        }
+                    >
                         Мероприятия
-                    </Link>
+                    </NavLink>
                 </div>
-			</div>
+            </div>
         </header>
     );
 };
