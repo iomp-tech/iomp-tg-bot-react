@@ -13,6 +13,7 @@ const CoursePageForm: React.FC = () => {
                     name="name"
                     className="input course-page-form-input__input"
                     placeholder="Ваше имя"
+                    required
                 />
             </div>
 
@@ -22,6 +23,7 @@ const CoursePageForm: React.FC = () => {
                     name="email"
                     className="input course-page-form-input__input"
                     placeholder="Ваша почта"
+                    required
                 />
             </div>
 
@@ -31,6 +33,7 @@ const CoursePageForm: React.FC = () => {
                     name="phone"
                     className="input course-page-form-input__input"
                     placeholder="Ваш телефон"
+                    required
                 />
             </div>
 
