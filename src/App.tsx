@@ -3,7 +3,7 @@ import {Route, Routes} from "react-router-dom";
 
 import {Footer} from "./components";
 
-import {Courses} from "./pages/";
+import {Courses, CoursePage} from "./pages/";
 
 const App: React.FC = () => {
     return (
@@ -11,12 +11,13 @@ const App: React.FC = () => {
             <React.Suspense fallback={<></>}>
                 <Routes>
                     <Route path="/" element={<Courses />} />
+                    <Route path="/course/:path" element={<CoursePage />} />
 
                     <Route path="*" element={<></>} />
                 </Routes>
-			</React.Suspense>
-			
-			<Footer />
+            </React.Suspense>
+
+            <Footer />
         </div>
     );
 };

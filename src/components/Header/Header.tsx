@@ -6,7 +6,7 @@ const Header: React.FC = () => {
         <header className="header">
             <div className="container">
                 <div className="header-wrapper">
-                    <Link to="/courses" className="header__link active">
+                    <Link to="/" className="header__link active">
                         Курсы
                     </Link>
                     <Link to="/timetable" className="header__link">
