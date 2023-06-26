@@ -1,0 +1,55 @@
+// courses
+.courses
+	&-block
+		position: relative
+
+		display: flex
+		justify-content: space-between
+		align-items: flex-start
+
+		padding: 15px
+		color: $black
+
+		overflow: hidden
+		
+		margin-bottom: 15px
+		
+		background-color: #f6f6f6
+
+		+borderRadius
+
+		&-content
+			&-text, &-btn
+				position: relative
+				z-index: 2
+
+			&-text
+				&__subtitle
+					font-size: 21px
+					margin-bottom: 5px
+
+				&__title
+					font-size: 32px
+					margin-bottom: 5px
+
+				&__auth
+					font-size: 21px
+					+bold
+
+			&-btn
+				margin-top: 50px
+				
+				&__price
+					font-size: 24px
+					margin-bottom: 15px
+
+				&__btn
+					width: 300px
+
+		&-image
+			width: 150px
+			height: 150px
+
+			border-radius: 100px
+
+			+backgroundSetting
