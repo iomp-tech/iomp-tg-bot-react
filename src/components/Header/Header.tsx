@@ -13,7 +13,9 @@ const Header: React.FC = () => {
                         Мероприятия
                     </Link>
                 </div>
-            </div>
+			</div>
+			
+			{document.body.clientWidth}
         </header>
     );
 };
