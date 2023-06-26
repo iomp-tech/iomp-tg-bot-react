@@ -8,7 +8,7 @@ const App: React.FC = () => {
         <div className="wrapper">
             <React.Suspense fallback={<></>}>
                 <Routes>
-                    <Route path="/courses" element={<Courses />} />
+                    <Route path="/" element={<Courses />} />
 
                     <Route path="*" element={<></>} />
                 </Routes>
