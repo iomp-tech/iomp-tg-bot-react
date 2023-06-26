@@ -1,5 +1,7 @@
 import React from "react";
-import {Route, Routes,} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
+
+import {Footer} from "./components";
 
 import {Courses} from "./pages/";
 
@@ -12,7 +14,9 @@ const App: React.FC = () => {
 
                     <Route path="*" element={<></>} />
                 </Routes>
-            </React.Suspense>
+			</React.Suspense>
+			
+			<Footer />
         </div>
     );
 };
