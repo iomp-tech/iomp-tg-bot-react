@@ -21,7 +21,8 @@ const CoursesBlock: React.FC = () => {
                 <div className="courses-block-content-btn">
                     <h3 className="courses-block-content-btn__price">
                         от 1094₽
-                    </h3>
+					</h3>
+					
                     <Link
                         to="/"
                         className="btn courses-block-content-btn__btn"

@@ -14,8 +14,6 @@ const Header: React.FC = () => {
                     </Link>
                 </div>
 			</div>
-			
-			{document.body.clientWidth}
         </header>
     );
 };
