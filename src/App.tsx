@@ -3,7 +3,7 @@ import {Route, Routes} from "react-router-dom";
 
 import {Footer} from "./components";
 
-import {Courses, CoursePage, Timetable, TimetablePage} from "./pages/";
+import {Courses, CoursePage, Timetable, TimetablePage, Thank} from "./pages/";
 
 const App: React.FC = () => {
     return (
@@ -18,6 +18,8 @@ const App: React.FC = () => {
                         path="/timetable/:path"
                         element={<TimetablePage />}
                     />
+
+                    <Route path="/thank" element={<Thank />} />
 
                     <Route path="*" element={<></>} />
                 </Routes>

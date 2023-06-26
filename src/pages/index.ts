@@ -9,3 +9,6 @@ export { default as Timetable } from "./Timetable"
 
 // TimetablePage
 export { default as TimetablePage } from "./TimetablePage"
+
+// Thank
+export { default as Thank } from "./Thank"
