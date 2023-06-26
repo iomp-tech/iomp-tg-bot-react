@@ -6,6 +6,7 @@ export { default as CoursesBlock } from "./Courses/CoursesBlock"
 
 // CoursePage
 export { default as CoursePageCover } from "./CoursePage/CoursePageCover"
+export { default as CoursePageForm } from "./CoursePage/CoursePageForm"
 
 // Footer
 export { default as Footer } from "./Footer/Footer"

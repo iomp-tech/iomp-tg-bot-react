@@ -1,9 +1,13 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-import {CoursePageCover} from "../components/";
+import {CoursePageCover, CoursePageForm} from "../components/";
 
 const CoursePage: React.FC = () => {
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <section className="course-page">
             <div className="container">
@@ -12,7 +16,8 @@ const CoursePage: React.FC = () => {
                 </Link>
 
                 <div className="course-page-wrapper">
-                    <CoursePageCover />
+					<CoursePageCover />
+					<CoursePageForm />
                 </div>
             </div>
         </section>

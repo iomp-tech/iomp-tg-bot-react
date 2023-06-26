@@ -3,6 +3,10 @@ import React from "react";
 import {Header, CoursesBlock} from "../components/";
 
 const Courses: React.FC = () => {
+    React.useEffect(() => {
+        window.scrollTo(0, 0);
+	}, []);
+	
     return (
         <>
             <Header />
