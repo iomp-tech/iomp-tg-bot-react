@@ -3,7 +3,7 @@ import {Route, Routes} from "react-router-dom";
 
 import {Footer} from "./components";
 
-import {Courses, CoursePage, Timetable} from "./pages/";
+import {Courses, CoursePage, Timetable, TimetablePage} from "./pages/";
 
 const App: React.FC = () => {
     return (
@@ -11,9 +11,13 @@ const App: React.FC = () => {
             <React.Suspense fallback={<></>}>
                 <Routes>
                     <Route path="/" element={<Courses />} />
-					<Route path="/course/:path" element={<CoursePage />} />
-					
+                    <Route path="/course/:path" element={<CoursePage />} />
+
                     <Route path="/timetable" element={<Timetable />} />
+                    <Route
+                        path="/timetable/:path"
+                        element={<TimetablePage />}
+                    />
 
                     <Route path="*" element={<></>} />
                 </Routes>

@@ -1,47 +1,47 @@
 import React from "react";
 
-const CoursePageForm: React.FC = () => {
+const TimetablePageForm: React.FC = () => {
     return (
-        <form className="course-page-form">
-            <h3 className="course-page-form__title">
+        <form className="timetable-page-form">
+            <h3 className="timetable-page-form__title">
                 Оставьте заявку на обученеие
             </h3>
 
-            <div className="course-page-form-input">
+            <div className="timetable-page-form-input">
                 <input
                     type="text"
                     name="name"
-                    className="input course-page-form-input__input"
+                    className="input timetable-page-form-input__input"
                     placeholder="Ваше имя"
                     required
                 />
             </div>
 
-            <div className="course-page-form-input">
+            <div className="timetable-page-form-input">
                 <input
                     type="text"
                     name="email"
-                    className="input course-page-form-input__input"
+                    className="input timetable-page-form-input__input"
                     placeholder="Ваша почта"
                     required
                 />
             </div>
 
-            <div className="course-page-form-input">
+            <div className="timetable-page-form-input">
                 <input
                     type="text"
                     name="phone"
-                    className="input course-page-form-input__input"
+                    className="input timetable-page-form-input__input"
                     placeholder="Ваш телефон"
                     required
                 />
             </div>
 
-            <button className="btn course-page-form__btn">
+            <button className="btn timetable-page-form__btn">
                 Оставить заявку
             </button>
         </form>
     );
 };
 
-export default CoursePageForm;
+export default TimetablePageForm;
