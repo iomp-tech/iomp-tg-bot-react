@@ -3,7 +3,15 @@ import {Route, Routes} from "react-router-dom";
 
 import {Footer} from "./components";
 
-import {Courses, CoursePage, Timetable, TimetablePage, Thank} from "./pages/";
+import {Courses, CoursePage, Timetable, TimetablePage} from "./pages/";
+
+declare global {
+    interface Window {
+        // __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
+        YooMoneyCheckoutWidget?: any;
+        Telegram?: any;
+    }
+}
 
 const App: React.FC = () => {
     return (
@@ -18,8 +26,6 @@ const App: React.FC = () => {
                         path="/timetable/:path"
                         element={<TimetablePage />}
                     />
-
-                    <Route path="/thank" element={<Thank />} />
 
                     <Route path="*" element={<></>} />
                 </Routes>

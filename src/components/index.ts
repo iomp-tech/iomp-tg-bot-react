@@ -11,9 +11,12 @@ export { default as CoursePageForm } from "./CoursePage/CoursePageForm"
 // Timetable
 export { default as TimetableBlock } from "./Timetable/TimetableBlock"
 
-// CoursePage
+// TimetablePage
 export { default as TimetablePageCover } from "./TimetablePage/TimetablePageCover"
 export { default as TimetablePageForm } from "./TimetablePage/TimetablePageForm"
+
+// Thank
+export { default as Thank } from "./Thank/Thank"
 
 // Footer
 export { default as Footer } from "./Footer/Footer"
