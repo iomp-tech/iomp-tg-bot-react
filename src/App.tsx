@@ -5,6 +5,8 @@ import {Footer} from "./components";
 
 import {Courses, CoursePage, Timetable, TimetablePage} from "./pages/";
 
+import {useTelegram} from "./hooks/useTelegram";
+
 declare global {
     interface Window {
         // __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
@@ -14,6 +16,12 @@ declare global {
 }
 
 const App: React.FC = () => {
+    const {tg} = useTelegram();
+
+    React.useEffect(() => {
+        tg.ready();
+    }, []);
+
     return (
         <div className="wrapper">
             <React.Suspense fallback={<></>}>
