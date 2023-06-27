@@ -16,7 +16,7 @@ declare global {
 }
 
 const App: React.FC = () => {
-    const {tg} = useTelegram();
+	const { tg } = useTelegram();
 
     React.useEffect(() => {
         tg.ready();
