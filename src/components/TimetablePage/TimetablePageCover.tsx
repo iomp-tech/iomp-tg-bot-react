@@ -19,7 +19,14 @@ const TimetablePageCover: React.FC = () => {
                     Гештальт-терапия
                 </h2>
 
-                <p className="timetable-page-cover-text__auth">Ася Глазкова</p>
+                <p className="timetable-page-cover-text__description">
+                    Классификация колод. Техника безопасности. Практика Денежный
+                    потолок. Игра «Препятствия и возможности». Формирование
+                    штампа судьбы. Как формируется судьба человека. Саботаж.
+                    Вторичные выгоды неудач. Почему нам «выгодно» проживать
+                    проблемы.
+                </p>
+
                 <h3 className="timetable-page-cover-text__date">
                     13 июня, 13:00
                 </h3>

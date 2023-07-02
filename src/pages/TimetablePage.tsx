@@ -11,9 +11,11 @@ const TimetablePage: React.FC = () => {
     return (
         <section className="timetable-page">
             <div className="container">
-                <Link to="/" className="timetable-page__back">
-                    ← Назад
-                </Link>
+                <div className="timetable-page-back">
+                    <Link to="/" className="timetable-page-back__back">
+                        ← Назад
+                    </Link>
+                </div>
 
                 <div className="timetable-page-wrapper">
                     <TimetablePageCover />

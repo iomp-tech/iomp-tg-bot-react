@@ -13,21 +13,29 @@
 
 		+borderRadius
 
-	&__back
-		display: block
+	&-back
+		top: 5px
+		position: sticky
 
-		cursor: pointer
-
-		font-size: 18px
-		border: none
-		background-color: transparent
-
-		color: $black
-		text-decoration: none
+		display: flex
+		justify-content: center
 
 		margin-bottom: 15px
-		
-		+bold
+
+		&__back
+			cursor: pointer
+
+			font-size: 16px
+			border: none
+			padding: 5px 10px
+			background-color: $white
+			color: $black
+			text-decoration: none
+
+			box-shadow: 0 0 75px rgba(0, 0, 0, 0.2)
+
+			+bold
+			+borderRadius
 
 	&-cover
 		&-image

@@ -6,23 +6,27 @@ const Header: React.FC = () => {
         <header className="header">
             <div className="container">
                 <div className="header-wrapper">
-                    <NavLink
-                        to="/"
-                        className={({isActive}) =>
-                            `header__link ${isActive ? "active" : ""}`
-                        }
-                    >
-                        Курсы
-                    </NavLink>
-
-                    <NavLink
-                        to="/timetable"
-                        className={({isActive}) =>
-                            `header__link ${isActive ? "active" : ""}`
-                        }
-                    >
-                        Мероприятия
-                    </NavLink>
+                    <div className="header-logo">
+                        <p className="header-logo__text">IOMP</p>
+                    </div>
+                    <div className="header-menu">
+                        <NavLink
+                            to="/timetable"
+                            className={({isActive}) =>
+                                `header-menu__link ${isActive ? "active" : ""}`
+                            }
+                        >
+                            Мероприятия
+                        </NavLink>
+                        <NavLink
+                            to="/"
+                            className={({isActive}) =>
+                                `header-menu__link ${isActive ? "active" : ""}`
+                            }
+                        >
+                            Курсы
+                        </NavLink>
+                    </div>
                 </div>
             </div>
         </header>

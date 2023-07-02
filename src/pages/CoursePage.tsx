@@ -11,13 +11,15 @@ const CoursePage: React.FC = () => {
     return (
         <section className="course-page">
             <div className="container">
-                <Link to="/" className="course-page__back">
-                    ← Назад
-                </Link>
+                <div className="course-page-back">
+                    <Link to="/" className="course-page-back__back">
+                        ← Назад
+                    </Link>
+                </div>
 
                 <div className="course-page-wrapper">
-					<CoursePageCover />
-					<CoursePageForm />
+                    <CoursePageCover />
+                    <CoursePageForm />
                 </div>
             </div>
         </section>

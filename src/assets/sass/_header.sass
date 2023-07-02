@@ -7,27 +7,34 @@
 		justify-content: space-between
 		align-items: center
 
-		padding-bottom: 15px
-		margin: 15px auto
+		padding-bottom: 20px
+		margin: 20px auto
 
 		border-bottom: 1px solid $gray
 
-	&__link
-		display: flex
-		justify-content: center
-		align-items: center
-		
-		padding: 20px 10px
+	&-logo
+		&__text
+			font-size: 18px
+			color: $mainColor
 
-		width: 49%
-		text-align: center
-		font-size: 24px
-		color: $mainColor
-		text-decoration: none
+			+bold
+			+borderRadius
 
-		+borderRadius
-		+transition
+	&-menu
+		&__link
+			padding: 10px 15px
 
-		&.active
-			background-color: $mainColor
-			color: $white
+			font-size: 18px
+			color: $mainColor
+			border: 1px solid $mainColor
+			text-decoration: none
+
+			+borderRadius
+			+transition
+
+			&:first-child
+				margin-right: 5px
+
+			&.active
+				background-color: $mainColor
+				color: $white
