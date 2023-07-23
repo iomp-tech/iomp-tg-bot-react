@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
     return (
@@ -11,12 +12,12 @@ const Footer: React.FC = () => {
                     <span className="footer__info">ИНН 7727431274</span>
                     <span className="footer__info">КПП 771401001</span>
 
-                    <a
-                        href="https://iomp.ru/institute"
+					<Link
+						to="/policy"
                         className="footer__link"
                     >
                         Сведения об образовательной организации
-                    </a>
+                    </Link>
                 </div>
             </div>
         </footer>

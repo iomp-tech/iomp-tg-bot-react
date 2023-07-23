@@ -20,11 +20,11 @@
 }
 
 // mixin
-@mixin light {
-	font-family: 'San Francisco Pro Light';
-	font-weight: 300;
+@mixin regular {
+	font-family: 'Manrope', sans-serif;
+	font-weight: 400;
 }
 @mixin bold {
-	font-family: 'San Francisco Pro Bold';
+	font-family: 'Manrope', sans-serif;
 	font-weight: 700;
 }

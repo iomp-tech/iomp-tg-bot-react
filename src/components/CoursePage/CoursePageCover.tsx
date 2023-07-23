@@ -1,27 +1,74 @@
 import React from "react";
+import {Link} from "react-router-dom";
+import YouTube from "react-youtube";
 
-const CoursePage: React.FC = () => {
+import {Course} from "../../models/ICourse";
+
+interface CoursePageCoverProps extends Course {}
+
+const CoursePageCover: React.FC<CoursePageCoverProps> = ({
+    _id,
+    videoUrl,
+    image,
+    category,
+    title,
+    description,
+    master,
+    price,
+    isDemo,
+    btnTextDemo,
+}) => {
+    let videoId: any;
+
+    if (videoUrl) {
+        const video = new URL(videoUrl);
+        const videoParams = new URLSearchParams(video.search);
+
+        videoId = videoParams.get("v");
+    }
+
     return (
         <div className="course-page-cover">
-            <div
-                className="course-page-cover-image"
-                style={{
-                    backgroundImage:
-                        "url('https://images.unsplash.com/photo-1687360464268-09429aecd6bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80')",
-                }}
-            ></div>
+            {videoId ? (
+                <div className="course-page-cover-video">
+                    <YouTube videoId={videoId} />
+                </div>
+            ) : (
+                <div
+                    className="course-page-cover-image"
+                    style={{
+                        backgroundImage: `url('${image}')`,
+                    }}
+                ></div>
+			)}
+			
             <div className="course-page-cover-text">
-                <p className="course-page-cover-text__subtitle">
-                    Общеобразовательные программы
-                </p>
+                <p className="course-page-cover-text__subtitle">{category}</p>
 
-                <h2 className="course-page-cover-text__title">Гештальт-терапия</h2>
+                <h2 className="course-page-cover-text__title">{title}</h2>
 
-                <p className="course-page-cover-text__auth">Ася Глазкова</p>
-                <h3 className="course-page-cover-text__price">от 1094₽</h3>
+                <p
+                    className="course-page-cover-text__description"
+                    dangerouslySetInnerHTML={{__html: description}}
+                ></p>
+
+                <p className="course-page-cover-text__auth">{master}</p>
+
+                {price !== "" ? (
+                    <h3 className="course-page-cover-text__price">{price}</h3>
+                ) : null}
+
+                {isDemo ? (
+                    <Link
+                        to={`/course/${_id}/demo`}
+                        className="btn course-page-cover-text__btn"
+                    >
+                        {btnTextDemo}
+                    </Link>
+                ) : null}
             </div>
         </div>
     );
 };
 
-export default CoursePage;
+export default CoursePageCover;

@@ -1,14 +1,23 @@
 import React from "react";
 
-const Thank: React.FC = () => {
+interface ThankProps {
+    thankPageTitle: string;
+    thankPageDescription: string;
+}
+
+const Thank: React.FC<ThankProps> = ({
+    thankPageTitle,
+    thankPageDescription,
+}) => {
     return (
         <section className="thank">
             <div className="container">
                 <div className="thank-wrapper">
-                    <h2 className="thank__title">Спасибо за заявку!</h2>
-					<button className="btn thank__btn">
-						Закрыть
-					</button>
+                    <h2 className="thank__title">{thankPageTitle}</h2>
+                    <p
+                        className="thank__description"
+                        dangerouslySetInnerHTML={{__html: thankPageDescription}}
+                    ></p>
                 </div>
             </div>
         </section>

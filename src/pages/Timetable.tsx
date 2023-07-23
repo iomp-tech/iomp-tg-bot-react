@@ -1,10 +1,19 @@
 import React from "react";
+import {useDispatch} from "react-redux";
 
-import {Header, TimetableBlock} from "../components/";
+import {useTypedSelector} from "../hooks/useTypedSelector";
+
+import {Header, Loader, TimetableBlock} from "../components/";
+
+import {fetchTimetable} from "../redux/actions/timetable";
 
 const Timetable: React.FC = () => {
+    const dispatch = useDispatch();
+
+    const {items, isLoaded} = useTypedSelector(({timetable}) => timetable);
+
     React.useEffect(() => {
-        window.scrollTo(0, 0);
+        dispatch(fetchTimetable() as any);
     }, []);
 
     return (
@@ -14,9 +23,18 @@ const Timetable: React.FC = () => {
             <section className="timetable">
                 <div className="container">
                     <div className="timetable-wrapper">
-                        <TimetableBlock />
-                        <TimetableBlock />
-                        <TimetableBlock />
+                        {isLoaded ? (
+                            <>
+                                {items.map((item, index) => (
+                                    <TimetableBlock
+                                        {...item}
+                                        key={`timetable-block-${index}`}
+                                    />
+                                ))}
+                            </>
+                        ) : (
+                            <Loader />
+                        )}
                     </div>
                 </div>
             </section>

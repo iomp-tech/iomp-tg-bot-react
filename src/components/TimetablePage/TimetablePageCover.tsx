@@ -1,34 +1,57 @@
 import React from "react";
+import moment from "moment";
+import YouTube from "react-youtube";
 
-const TimetablePageCover: React.FC = () => {
+import {Timetable} from "../../models/ITimetable";
+
+interface TimetablePageCoverProps extends Timetable {}
+
+const TimetablePageCover: React.FC<TimetablePageCoverProps> = ({
+	image,
+	videoUrl,
+    category,
+    title,
+    description,
+    date,
+}) => {
+    let videoId: any;
+
+    if (videoUrl) {
+        const video = new URL(videoUrl);
+        const videoParams = new URLSearchParams(video.search);
+
+        videoId = videoParams.get("v");
+	}
+	
     return (
         <div className="timetable-page-cover">
-            <div
-                className="timetable-page-cover-image"
-                style={{
-                    backgroundImage:
-                        "url('https://images.unsplash.com/photo-1687360464268-09429aecd6bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80')",
-                }}
-            ></div>
+            {videoId ? (
+                <div className="timetable-page-cover-video">
+                    <YouTube videoId={videoId} />
+                </div>
+            ) : (
+                <div
+                    className="timetable-page-cover-image"
+                    style={{
+                        backgroundImage: `url('${image}')`,
+                    }}
+                ></div>
+            )}
+
             <div className="timetable-page-cover-text">
                 <p className="timetable-page-cover-text__subtitle">
-                    Общеобразовательные программы
+                    {category}
                 </p>
 
-                <h2 className="timetable-page-cover-text__title">
-                    Гештальт-терапия
-                </h2>
+                <h2 className="timetable-page-cover-text__title">{title}</h2>
 
-                <p className="timetable-page-cover-text__description">
-                    Классификация колод. Техника безопасности. Практика Денежный
-                    потолок. Игра «Препятствия и возможности». Формирование
-                    штампа судьбы. Как формируется судьба человека. Саботаж.
-                    Вторичные выгоды неудач. Почему нам «выгодно» проживать
-                    проблемы.
-                </p>
+                <p
+                    className="timetable-page-cover-text__description"
+                    dangerouslySetInnerHTML={{__html: description}}
+                ></p>
 
                 <h3 className="timetable-page-cover-text__date">
-                    13 июня, 13:00
+                    {moment(date).format("DD MMMM, HH:mm")}
                 </h3>
             </div>
         </div>

@@ -1,10 +1,19 @@
 import React from "react";
+import {useDispatch} from "react-redux";
 
-import {Header, CoursesBlock} from "../components/";
+import {useTypedSelector} from "../hooks/useTypedSelector";
+
+import {Header, Loader, CoursesBlock} from "../components/";
+
+import {fetchCourse} from "../redux/actions/course";
 
 const Courses: React.FC = () => {
+    const dispatch = useDispatch();
+
+    const {items, isLoaded} = useTypedSelector(({course}) => course);
+
     React.useEffect(() => {
-        window.scrollTo(0, 0);
+        dispatch(fetchCourse() as any);
 	}, []);
 	
     return (
@@ -14,10 +23,18 @@ const Courses: React.FC = () => {
             <section className="courses">
                 <div className="container">
                     <div className="courses-wrapper">
-                        <CoursesBlock />
-                        <CoursesBlock />
-                        <CoursesBlock />
-                        <CoursesBlock />
+                        {isLoaded ? (
+                            <>
+                                {items.map((item, index) => (
+                                    <CoursesBlock
+                                        {...item}
+                                        key={`courses-block-${index}`}
+                                    />
+                                ))}
+                            </>
+                        ) : (
+                            <Loader />
+                        )}
                     </div>
                 </div>
             </section>

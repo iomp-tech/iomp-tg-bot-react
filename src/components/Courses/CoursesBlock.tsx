@@ -1,26 +1,43 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-const CoursesBlock: React.FC = () => {
+import {Course} from "../../models/ICourse";
+
+interface CoursesBlockProps extends Course {}
+
+const CoursesBlock: React.FC<CoursesBlockProps> = ({
+    _id,
+    image,
+    category,
+    title,
+    description,
+    master,
+    price,
+}) => {
     return (
-        <Link to="/course/page" className="courses-block">
+        <Link to={`/course/${_id}`} className="courses-block">
             <div
                 className="courses-block-image"
                 style={{
-                    backgroundImage:
-                        "url('https://images.unsplash.com/photo-1687360464268-09429aecd6bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=765&q=80')",
+                    backgroundImage: `url('${image}')`,
                 }}
             ></div>
 
             <div className="courses-block-text">
-                <p className="courses-block-text__subtitle">
-                    Общеобразовательные программы
-                </p>
+                <p className="courses-block-text__subtitle">{category}</p>
 
-                <h2 className="courses-block-text__title">Гештальт-терапия</h2>
+                <h2 className="courses-block-text__title">{title}</h2>
 
-                <p className="courses-block-text__auth">Ася Глазкова</p>
-                <h3 className="courses-block-text__price">от 1094₽</h3>
+                <p
+                    className="courses-block-text__description"
+                    dangerouslySetInnerHTML={{__html: description}}
+                ></p>
+
+                <p className="courses-block-text__auth">{master}</p>
+
+                {price !== "" ? (
+                    <h3 className="courses-block-text__price">{price}</h3>
+                ) : null}
 
                 <button className="btn courses-block-text__btn">
                     Подробнее

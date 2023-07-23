@@ -1,28 +1,81 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import axios from "axios";
 
-import {CoursePageCover, CoursePageForm} from "../components/";
+import {useTelegram} from "../hooks/useTelegram";
+import {useTypedSelector} from "../hooks/useTypedSelector";
+
+import {
+    CoursePageCover,
+    CoursePageForm,
+    Loader,
+    Thank,
+} from "../components/";
+
+import {fetchCourseById} from "../redux/actions/course";
 
 const CoursePage: React.FC = () => {
+    const dispatch = useDispatch();
+    const {id} = useParams();
+
+    const {user} = useTelegram();
+
+    const [isSend, setIsSend] = React.useState<boolean>(false);
+
+    const {itemById, isLoadedById} = useTypedSelector(({course}) => course);
+
     React.useEffect(() => {
-        window.scrollTo(0, 0);
+        dispatch(fetchCourseById(id ? id : "") as any);
     }, []);
 
-    return (
-        <section className="course-page">
-            <div className="container">
-                <div className="course-page-back">
-                    <Link to="/" className="course-page-back__back">
-                        ← Назад
-                    </Link>
-                </div>
+    const onSubmit = (data: any) => {
+        const {name, email, phone} = data;
 
-                <div className="course-page-wrapper">
-                    <CoursePageCover />
-                    <CoursePageForm />
-                </div>
-            </div>
-        </section>
+        axios.post(`${process.env.REACT_APP_API_AWO_DOMEN}/goods/buy`, {
+            name,
+            email,
+            phone,
+            idAwo: itemById.idAwo,
+            message: "Заявка из ТГ бота",
+            telegram_user: user.username,
+        });
+
+        setIsSend(true);
+    };
+
+    return (
+        <>
+            {isLoadedById ? (
+                <section className="course-page">
+                    <div className="container">
+                        <div className="course-page-back">
+                            <span
+                                onClick={() => window.history.back()}
+                                className="course-page-back__back"
+                            >
+                                ← Назад
+                            </span>
+                        </div>
+
+                        {isSend ? (
+                            <Thank {...itemById} />
+                        ) : (
+                            <div className="course-page-wrapper">
+                                <CoursePageCover {...itemById} />
+
+                                <CoursePageForm
+                                    onSubmit={onSubmit}
+                                    {...itemById}
+                                />
+                            </div>
+                        )}
+                    </div>
+                </section>
+            ) : (
+                <Loader />
+            )}
+        </>
     );
 };
 
