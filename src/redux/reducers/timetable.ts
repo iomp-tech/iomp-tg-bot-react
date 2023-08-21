@@ -13,6 +13,7 @@ const initialState: TimetableState = {
 		title: "",
 		description: "",
 		date: "",
+		btnText: "",
 		formTitle: "",
 		thankPageTitle: "",
 		thankPageDescription: "",

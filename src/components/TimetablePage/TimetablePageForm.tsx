@@ -1,13 +1,11 @@
 import React from "react";
 import {Field, reduxForm, InjectedFormProps} from "redux-form";
-import {createTextMask} from "redux-form-input-masks";
 
 import {RenderInput} from "../";
 
 import {validate} from "./validate";
 
 const TimetablePageForm: React.FC<any> = ({handleSubmit, formTitle}) => {
-    console.log(formTitle);
     return (
         <form className="timetable-page-form" onSubmit={handleSubmit}>
             <h3 className="timetable-page-form__title">{formTitle}</h3>
@@ -27,11 +25,6 @@ const TimetablePageForm: React.FC<any> = ({handleSubmit, formTitle}) => {
                     label={"Ваш телефон"}
                     type="text"
                     name="phone"
-                    {...createTextMask({
-                        pattern: "+7 999 999 99-99",
-                        guide: false,
-                        stripMask: false,
-                    })}
                 />
             </div>
 

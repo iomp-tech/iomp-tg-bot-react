@@ -7,6 +7,7 @@ export interface Timetable {
 	title: string
 	description: string
 	date: string
+	btnText: string
 	formTitle: string
 	thankPageTitle: string
 	thankPageDescription: string

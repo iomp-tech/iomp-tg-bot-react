@@ -13,6 +13,9 @@ export { default as CoursePageCover } from "./CoursePage/CoursePageCover"
 export { default as CoursePageCoverDemo } from "./CoursePage/CoursePageCoverDemo"
 export { default as CoursePageForm } from "./CoursePage/CoursePageForm"
 export { default as CoursePageFormDemo } from "./CoursePage/CoursePageFormDemo"
+// CoursePageProgramm
+export { default as CoursePageProgramm } from "./CoursePage/CoursePageProgramm/CoursePageProgramm"
+export { default as CoursePageProgrammItem } from "./CoursePage/CoursePageProgramm/CoursePageProgrammItem"
 
 // Timetable
 export { default as TimetableBlock } from "./Timetable/TimetableBlock"

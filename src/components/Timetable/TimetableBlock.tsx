@@ -12,7 +12,8 @@ const TimetableBlock: React.FC<TimetableBlockProps> = ({
     category,
     title,
     description,
-    date,
+	date,
+	btnText
 }) => {
     return (
         <Link to={`/timetable/${_id}`} className="timetable-block">
@@ -31,15 +32,14 @@ const TimetableBlock: React.FC<TimetableBlockProps> = ({
                 <p
                     className="timetable-block-text__description"
                     dangerouslySetInnerHTML={{__html: description}}
-                >
-                </p>
+                ></p>
 
                 <h3 className="timetable-block-text__date">
                     {moment(date).format("DD MMMM, HH:mm")}
                 </h3>
 
                 <button className="btn timetable-block-text__btn">
-                    Подробнее
+                    {btnText}
                 </button>
             </div>
         </Link>

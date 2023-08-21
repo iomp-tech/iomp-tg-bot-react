@@ -1,3 +1,16 @@
+export interface CourseProgrammItem {
+	subtitle: string
+	title: string
+	description: string
+}
+
+export interface CourseProgramm {
+	title: string
+	description: string
+
+	items: CourseProgrammItem[]
+}
+
 export interface Course {
 	_id: string
 	price: string
@@ -7,8 +20,11 @@ export interface Course {
 	title: string
 	description: string
 	master: string
+	btnText: string
 	formTitle: string
 	idAwo: number
+
+	programm: CourseProgramm
 
 	thankPageTitle: string
 	thankPageDescription: string

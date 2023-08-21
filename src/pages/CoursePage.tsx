@@ -1,82 +1,86 @@
 import React from "react";
-import {Link, useParams} from "react-router-dom";
-import {useDispatch} from "react-redux";
+import { Link, useParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 
-import {useTelegram} from "../hooks/useTelegram";
-import {useTypedSelector} from "../hooks/useTypedSelector";
+import { useTelegram } from "../hooks/useTelegram";
+import { useTypedSelector } from "../hooks/useTypedSelector";
 
 import {
-    CoursePageCover,
-    CoursePageForm,
-    Loader,
-    Thank,
+	CoursePageCover,
+	CoursePageProgramm,
+	CoursePageForm,
+	Loader,
+	Thank,
 } from "../components/";
 
-import {fetchCourseById} from "../redux/actions/course";
+import { fetchCourseById } from "../redux/actions/course";
 
 const CoursePage: React.FC = () => {
-    const dispatch = useDispatch();
-    const {id} = useParams();
+	const dispatch = useDispatch();
 
-    const {user} = useTelegram();
+	const { id } = useParams();
 
-    const [isSend, setIsSend] = React.useState<boolean>(false);
+	const { user } = useTelegram();
 
-    const {itemById, isLoadedById} = useTypedSelector(({course}) => course);
+	const [isSend, setIsSend] = React.useState<boolean>(false);
 
-    React.useEffect(() => {
-        dispatch(fetchCourseById(id ? id : "") as any);
-    }, []);
+	const { itemById, isLoadedById } = useTypedSelector(({ course }) => course);
 
-    const onSubmit = (data: any) => {
-        const {name, email, phone} = data;
+	React.useEffect(() => {
+		dispatch(fetchCourseById(id ? id : "") as any);
+	}, []);
 
-        axios.post(`${process.env.REACT_APP_API_AWO_DOMEN}/goods/buy`, {
-            name,
-            email,
-            phone,
-            idAwo: itemById.idAwo,
-            message: "Заявка из ТГ бота",
-            telegram_user: user.username,
-        });
+	const onSubmit = (data: any) => {
+		const { name, email, phone } = data;
 
-        setIsSend(true);
-    };
+		axios.post(`${process.env.REACT_APP_API_AWO_DOMEN}/goods/buy`, {
+			name,
+			email,
+			phone,
+			idAwo: itemById.idAwo,
+			message: "Заявка из ТГ бота",
+			telegram_user: user.username,
+		});
 
-    return (
-        <>
-            {isLoadedById ? (
-                <section className="course-page">
-                    <div className="container">
-                        <div className="course-page-back">
-                            <span
-                                onClick={() => window.history.back()}
-                                className="course-page-back__back"
-                            >
-                                ← Назад
-                            </span>
-                        </div>
+		setIsSend(true);
+	};
 
-                        {isSend ? (
-                            <Thank {...itemById} />
-                        ) : (
-                            <div className="course-page-wrapper">
-                                <CoursePageCover {...itemById} />
+	return (
+		<>
+			{isLoadedById ? (
+				<section className="course-page">
+					<div className="container">
+						<div className="course-page-back">
+							<span
+								onClick={() => window.history.back()}
+								className="course-page-back__back"
+							>
+								← Назад
+							</span>
+						</div>
 
-                                <CoursePageForm
-                                    onSubmit={onSubmit}
-                                    {...itemById}
-                                />
-                            </div>
-                        )}
-                    </div>
-                </section>
-            ) : (
-                <Loader />
-            )}
-        </>
-    );
+						{isSend ? (
+							<Thank {...itemById} />
+						) : (
+							<div className="course-page-wrapper">
+								<CoursePageCover {...itemById} />
+
+								<CoursePageProgramm {...itemById.programm} />
+
+								<CoursePageForm
+									onSubmit={onSubmit}
+									{...itemById}
+								/>
+							</div>
+						)}
+					</div>
+				</section>
+			) : (
+				<Loader />
+			)}
+		</>
+	);
 };
 
 export default CoursePage;

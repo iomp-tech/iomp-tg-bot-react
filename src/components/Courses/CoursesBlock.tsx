@@ -12,7 +12,8 @@ const CoursesBlock: React.FC<CoursesBlockProps> = ({
     title,
     description,
     master,
-    price,
+	price,
+	btnText
 }) => {
     return (
         <Link to={`/course/${_id}`} className="courses-block">
@@ -40,7 +41,7 @@ const CoursesBlock: React.FC<CoursesBlockProps> = ({
                 ) : null}
 
                 <button className="btn courses-block-text__btn">
-                    Подробнее
+                    {btnText}
                 </button>
             </div>
         </Link>

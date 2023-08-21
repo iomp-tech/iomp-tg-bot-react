@@ -1,6 +1,5 @@
 import React from "react";
 import {Field, reduxForm, InjectedFormProps} from "redux-form";
-import {createTextMask} from "redux-form-input-masks";
 
 import {RenderInput} from "../";
 
@@ -33,11 +32,6 @@ const CoursePageFormDemo: React.FC<InjectedFormProps> = ({handleSubmit}) => {
                     label={"Ваш телефон"}
                     type="text"
                     name="phone"
-                    {...createTextMask({
-                        pattern: "+7 999 999 99-99",
-                        guide: false,
-                        stripMask: false,
-                    })}
                 />
             </div>
 

@@ -13,10 +13,17 @@ const initialState: CourseState = {
 		title: "",
 		description: "",
 		master: "",
+		btnText: "",
 		formTitle: "",
 		idAwo: 0,
 		thankPageTitle: "",
 		thankPageDescription: "",
+
+		programm: {
+			title: "",
+			description: "",
+			items: []
+		},
 
 		isDemo: false,
 		btnTextDemo: "",
